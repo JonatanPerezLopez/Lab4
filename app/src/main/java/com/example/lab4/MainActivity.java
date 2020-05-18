@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String DEBUG_TAG = "Lab4 Dbg tag";
     //variables
     private static final int REQ_CODE = 1;
     TelephonyManager telephonyManager;
