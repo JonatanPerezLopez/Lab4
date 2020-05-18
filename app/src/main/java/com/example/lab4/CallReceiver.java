@@ -12,8 +12,11 @@ public class CallReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if(intent.getAction() == TelephonyManager.ACTION_PHONE_STATE_CHANGED) {
             String state = intent.getStringExtra(TelephonyManager.EXTRA_STATE);
-            String phoneNumber= intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
             Toast.makeText(context.getApplicationContext(),state,Toast.LENGTH_SHORT).show();
+            if (intent.getIntExtra(TelephonyManager.EXTRA_STATE,0) == TelephonyManager.CALL_STATE_RINGING) {
+                String phoneNumber = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
+                Toast.makeText(context.getApplicationContext(),phoneNumber,Toast.LENGTH_SHORT).show();
+            }
         }
         throw new UnsupportedOperationException("Not yet implemented");
     }
