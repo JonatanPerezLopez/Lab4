@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQ_CODE = 1;
     TelephonyManager telephonyManager;
     PhoneStateListener phoneStateListener;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
