@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Lab4</string>
+    <string name="opid">opID</string>
+    <string name="country">country</string>
+    <string name="network">network</string>
+    <string name="button">Button</string>
+    <string name="phone_number">phone_number</string>
+</resources>
