@@ -4,5 +4,7 @@
     <string name="country">country</string>
     <string name="network">network</string>
     <string name="button">Button</string>
-    <string name="phone_number">phone_number</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="message">Message</string>
+    <string name="send">Send</string>
 </resources>

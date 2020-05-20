@@ -2,6 +2,7 @@ package com.example.lab4;
 
 import android.Manifest;
 import android.app.Service;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQ_CODE = 1;
     TelephonyManager telephonyManager;
     PhoneStateListener phoneStateListener;
+    IncomingSmsReceiver smsReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         TextView network = findViewById(R.id.network);
         TextView phone_number = findViewById(R.id.phone_number);
         Button button = findViewById(R.id.button);
-
 
         telephonyManager = (TelephonyManager) getSystemService(Service.TELEPHONY_SERVICE);
 
@@ -92,5 +93,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         telephonyManager.listen(phoneStateListener, PhoneStateListener.LISTEN_NONE);
+        //unregisterReceiver(smsReceiver); //not needed
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(smsReceiver);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        smsReceiver= new IncomingSmsReceiver();
+        registerReceiver(smsReceiver, new IntentFilter("android.provider.Telephony.SMS_RECEIVED"));
     }
 }
